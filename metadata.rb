@@ -1,0 +1,7 @@
+name 'inspec-workshop-cookbook'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures inspec-workshop-cookbook'
+long_description 'Installs/Configures inspec-workshop-cookbook'
+version '0.1.0'
