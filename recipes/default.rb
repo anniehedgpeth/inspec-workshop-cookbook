@@ -29,3 +29,16 @@ end
 package 'ntp'
 package 'ntpdate'
 package 'ntp'
+package 'rsyslog'
+
+service "iptables" do
+  action :enable
+end
+
+cookbook_file '/etc/hosts.allow' do
+  source 'hosts.allow'
+  owner 'root'
+  mode '0644'
+  action :create
+end
+
