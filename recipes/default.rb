@@ -30,9 +30,14 @@ package 'ntp'
 package 'ntpdate'
 package 'ntp'
 package 'rsyslog'
+package 'tcp_wrappers'
 
 service "iptables" do
   action :enable
+end
+
+service "syslog" do
+  action :disable
 end
 
 cookbook_file '/etc/hosts.allow' do
@@ -42,3 +47,22 @@ cookbook_file '/etc/hosts.allow' do
   action :create
 end
 
+cookbook_file '/etc/hosts.deny' do
+  source 'hosts.deny'
+  owner 'root'
+  mode '0644'
+  action :create
+end
+
+cookbook_file '/etc/rsyslog.conf' do
+  source 'rsyslog.conf'
+  action :create
+end
+
+service 'rsyslog' do
+  action :restart
+end
+
+cookbook_file '/etc/audit/auditd.conf' do
+  source 'auditd.conf'
+end
