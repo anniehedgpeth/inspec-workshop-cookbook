@@ -85,3 +85,8 @@ execute 'kernel_parameters_3' do
   command '/sbin/sysctl -w net.ipv4.route.flush=1'
 #  not_if 'bundle check' # This is not run inside /myapp
 end
+
+execute 'kernel_parameters_3' do
+  command '/sbin/sysctl -w net.ipv4.conf.default.send_redirects=0'
+#  not_if 'bundle check' # This is not run inside /myapp
+end
