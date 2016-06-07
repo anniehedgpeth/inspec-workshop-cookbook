@@ -70,3 +70,18 @@ end
 # cookbook_file '/etc/audit/auditd' do
 #   action :write
 # end
+
+execute 'kernel_parameters' do
+  command '/sbin/sysctl -w net.ipv4.conf.all.send_redirects=0'
+#  not_if 'bundle check' # This is not run inside /myapp
+end
+
+# execute 'kernel_parameters_2' do
+#   command '/sbin/sysctl -w net.ipv4.default.all.send_redirects=0'
+# #  not_if 'bundle check' # This is not run inside /myapp
+# end
+
+execute 'kernel_parameters_3' do
+  command '/sbin/sysctl -w net.ipv4.route.flush=1'
+#  not_if 'bundle check' # This is not run inside /myapp
+end
