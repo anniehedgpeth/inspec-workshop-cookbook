@@ -19,7 +19,7 @@ cookbook_file '/etc/sysctl.conf' do
   action :create
 end
 
-directory '/etc/sysconfig'
+# directory '/etc/sysconfig'
 
 cookbook_file '/etc/sysconfig/init' do
   source 'init'
@@ -66,3 +66,7 @@ end
 cookbook_file '/etc/audit/auditd.conf' do
   source 'auditd.conf'
 end
+
+# cookbook_file '/etc/audit/auditd' do
+#   action :write
+# end
