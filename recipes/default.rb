@@ -65,6 +65,7 @@ end
 
 cookbook_file '/etc/audit/auditd.conf' do
   source 'auditd.conf'
+  action :create
 end
 
 # cookbook_file '/etc/audit/auditd' do
