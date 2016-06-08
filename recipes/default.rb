@@ -100,3 +100,13 @@ execute 'kernel_parameters_6' do
   command '/sbin/sysctl -w net.ipv4.conf.default.accept_redirects=0'
 #  not_if 'bundle check' # This is not run inside /myapp
 end
+
+execute 'kernel_parameters_7' do
+  command '/sbin/sysctl -w net.ipv4.conf.all.secure_redirects=0'
+#  not_if 'bundle check' # This is not run inside /myapp
+end
+
+execute 'kernel_parameters_8' do
+  command '/sbin/sysctl -w net.ipv4.conf.default.secure_redirects=0'
+#  not_if 'bundle check' # This is not run inside /myapp
+end
