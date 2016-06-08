@@ -36,6 +36,10 @@ service "iptables" do
   action :enable
 end
 
+service "crond" do
+  action :enable
+end
+
 service "auditd" do
   action :enable
 end
