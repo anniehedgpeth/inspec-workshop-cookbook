@@ -19,6 +19,11 @@ cookbook_file '/etc/sysctl.conf' do
   action :create
 end
 
+cookbook_file '/etc/ssh/sshd_config' do
+  source 'sshd_config'
+  action :create
+end
+
 # directory '/etc/sysconfig'
 
 cookbook_file '/etc/sysconfig/init' do
