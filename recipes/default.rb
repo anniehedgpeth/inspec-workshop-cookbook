@@ -11,7 +11,8 @@ files={
   'sshd_config'=> '/etc/ssh/sshd_config',
   'init'=> '/etc/sysconfig/init', 
   'rsyslog.conf'=> '/etc/rsyslog.conf',
-  'auditd.conf'=> '/etc/audit/auditd.conf'
+  'auditd.conf'=> '/etc/audit/auditd.conf',
+  'system-auth'=> '/etc/pam.d/system-auth'
 }
 files.each do |key,value|
   cookbook_file value do
