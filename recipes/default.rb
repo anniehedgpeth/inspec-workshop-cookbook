@@ -126,14 +126,10 @@ execute 'kernel_parameters_10' do
 #  not_if 'bundle check' # This is not run inside /myapp
 end
 
- directory '/etc/cron.monthly' do
-   owner 'root'
-   group 'root'
-   mode 0600
- end
- 
- directory '/etc/crontab' do
-   owner 'root'
-   group 'root'
-   mode 0600
+['/etc/cron.monthly','/etc/crontab'].each do |name|
+   directory name do
+     owner 'root'
+     group 'root'
+     mode 0600
+   end
  end
