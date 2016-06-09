@@ -20,7 +20,7 @@ files.each do |key,value|
   end
 end
 
-['/etc/cron.monthly','/etc/crontab'].each do |name|
+['/etc/cron.monthly','/etc/crontab','/etc/cron.hourly','/etc/cron.daily','/etc/cron.weekly','/etc/cron.d'].each do |name|
    directory name do
      owner 'root'
      group 'root'
