@@ -39,7 +39,7 @@ SyslogFacility AUTHPRIV
 # Authentication:
 
 #LoginGraceTime 2m
-#PermitRootLogin yes
+PermitRootLogin no
 #StrictModes yes
 MaxAuthTries 4
 #MaxSessions 10
@@ -62,7 +62,7 @@ IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
 #PasswordAuthentication yes
-#PermitEmptyPasswords no
+PermitEmptyPasswords no
 PasswordAuthentication yes
 
 # Change to no to disable s/key passwords
@@ -114,10 +114,10 @@ X11Forwarding no
 #TCPKeepAlive yes
 #UseLogin no
 #UsePrivilegeSeparation yes
-#PermitUserEnvironment no
+PermitUserEnvironment no
 #Compression delayed
-#ClientAliveInterval 0
-#ClientAliveCountMax 3
+ClientAliveInterval 300
+ClientAliveCountMax 0
 #ShowPatchLevel no
 #UseDNS yes
 #PidFile /var/run/sshd.pid
@@ -126,7 +126,7 @@ X11Forwarding no
 #ChrootDirectory none
 
 # no default banner path
-#Banner none
+Banner /etc/issue.net
 
 # override default of no subsystems
 Subsystem	sftp    /usr/libexec/openssh/sftp-server
@@ -137,4 +137,11 @@ Subsystem	sftp    /usr/libexec/openssh/sftp-server
 #	AllowTcpForwarding no
 #	ForceCommand cvs server
 UseDNS no
+
+Ciphers aes128-ctr,aes192-ctr,aes256-ctr
+
+AllowUsers <userlist>
+AllowGroups <grouplist>
+DenyUsers <userlist>
+DenyGroups <grouplist>
 
