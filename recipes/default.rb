@@ -126,3 +126,9 @@ end
    group 'root'
    mode 0600
  end
+ 
+ directory '/etc/crontab' do
+   owner 'root'
+   group 'root'
+   mode 0600
+ end
