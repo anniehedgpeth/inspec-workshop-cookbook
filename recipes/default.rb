@@ -3,6 +3,7 @@
 # Recipe:: default
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
+
 files={
   'grub.conf'=> '/etc/grub.conf',
   'limits.conf'=> '/etc/security/limits.conf',
@@ -19,46 +20,39 @@ files.each do |key,value|
   end
 end
 
-package 'ntp'
-package 'ntpdate'
-package 'ntp'
-package 'rsyslog'
-package 'tcp_wrappers'
+['/etc/cron.monthly','/etc/crontab'].each do |name|
+   directory name do
+     owner 'root'
+     group 'root'
+     mode 0600
+   end
+ end
 
-service "iptables" do
-  action :enable
+['ntp','ntpdate','rsyslog','tcp_wrappers'].each do |name|
+    package name
 end
 
-service "crond" do
-  action :enable
-end
-
-service "auditd" do
-  action :enable
-end
-
-service "syslog" do
-  action :disable
-end
-
-cookbook_file '/etc/hosts.allow' do
-  source 'hosts.allow'
-  owner 'root'
-  mode '0644'
-  action :create
-end
-
-cookbook_file '/etc/hosts.deny' do
-  source 'hosts.deny'
-  owner 'root'
-  mode '0644'
-  action :create
-end
-
-
-
-service 'rsyslog' do
+['iptables','crond','auditd','rsyslog'].each do |name|
+   service name do
+     action :enable
+   end
+ end
+ 
+ service 'rsyslog' do
   action :restart
+end
+
+files={
+  'hosts.allow'=> '/etc/hosts.allow',
+  'hosts.deny'=> '/etc/hosts.deny'
+}
+files.each do |key,value|
+  cookbook_file value do
+    source key
+    action :create
+    owner 'root'
+    mode 0644
+  end
 end
 
 execute 'kernel_parameters' do
@@ -106,10 +100,3 @@ execute 'kernel_parameters_10' do
 #  not_if 'bundle check' # This is not run inside /myapp
 end
 
-['/etc/cron.monthly','/etc/crontab'].each do |name|
-   directory name do
-     owner 'root'
-     group 'root'
-     mode 0600
-   end
- end
