@@ -55,48 +55,8 @@ files.each do |key,value|
   end
 end
 
-execute 'kernel_parameters' do
-  command '/sbin/sysctl -w net.ipv4.conf.all.send_redirects=0'
-#  not_if 'bundle check' # This is not run inside /myapp
+['/sbin/sysctl -w net.ipv4.conf.all.send_redirects=0','/sbin/sysctl -w net.ipv4.route.flush=1','/sbin/sysctl -w net.ipv4.conf.default.send_redirects=0','/sbin/sysctl -w net.ipv4.conf.all.accept_redirects=0','/sbin/sysctl -w net.ipv4.conf.default.accept_redirects=0','/sbin/sysctl -w net.ipv4.conf.all.secure_redirects=0','/sbin/sysctl -w net.ipv4.conf.default.secure_redirects=0','/sbin/sysctl -w net.ipv4.conf.all.log_martians=1','/sbin/sysctl -w net.ipv4.conf.default.log_martians=1'].each do |name|
+    execute 'kernel_parameters' do 
+      command name 
+    end
 end
-
-execute 'kernel_parameters_3' do
-  command '/sbin/sysctl -w net.ipv4.route.flush=1'
-#  not_if 'bundle check' # This is not run inside /myapp
-end
-
-execute 'kernel_parameters_4' do
-  command '/sbin/sysctl -w net.ipv4.conf.default.send_redirects=0'
-#  not_if 'bundle check' # This is not run inside /myapp
-end
-
-execute 'kernel_parameters_5' do
-  command '/sbin/sysctl -w net.ipv4.conf.all.accept_redirects=0'
-#  not_if 'bundle check' # This is not run inside /myapp
-end
-
-execute 'kernel_parameters_6' do
-  command '/sbin/sysctl -w net.ipv4.conf.default.accept_redirects=0'
-#  not_if 'bundle check' # This is not run inside /myapp
-end
-
-execute 'kernel_parameters_7' do
-  command '/sbin/sysctl -w net.ipv4.conf.all.secure_redirects=0'
-#  not_if 'bundle check' # This is not run inside /myapp
-end
-
-execute 'kernel_parameters_8' do
-  command '/sbin/sysctl -w net.ipv4.conf.default.secure_redirects=0'
-#  not_if 'bundle check' # This is not run inside /myapp
-end
-
-execute 'kernel_parameters_9' do
-  command '/sbin/sysctl -w net.ipv4.conf.all.log_martians=1'
-#  not_if 'bundle check' # This is not run inside /myapp
-end
-
-execute 'kernel_parameters_10' do
-  command '/sbin/sysctl -w net.ipv4.conf.default.log_martians=1'
-#  not_if 'bundle check' # This is not run inside /myapp
-end
-
