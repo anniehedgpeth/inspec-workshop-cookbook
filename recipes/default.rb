@@ -120,3 +120,9 @@ execute 'kernel_parameters_10' do
   command '/sbin/sysctl -w net.ipv4.conf.default.log_martians=1'
 #  not_if 'bundle check' # This is not run inside /myapp
 end
+
+ directory '/etc/cron.monthly' do
+   owner 'root'
+   group 'root'
+   mode 0600
+ end
