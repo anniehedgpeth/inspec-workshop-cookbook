@@ -13,7 +13,8 @@ files={
   'rsyslog.conf'=> '/etc/rsyslog.conf',
   'auditd.conf'=> '/etc/audit/auditd.conf',
   'system-auth'=> '/etc/pam.d/system-auth',
-  'login.defs'=> '/etc/login.defs'
+  'login.defs'=> '/etc/login.defs',
+  'bashrc'=> '/etc/bashrc'
 }
 files.each do |key,value|
   cookbook_file value do
