@@ -14,7 +14,9 @@ files={
   'auditd.conf'=> '/etc/audit/auditd.conf',
   'system-auth'=> '/etc/pam.d/system-auth',
   'login.defs'=> '/etc/login.defs',
-  'bashrc'=> '/etc/bashrc'
+  'bashrc'=> '/etc/bashrc',
+  'issue.net'=> '/etc/issue.net',
+  'issue'=> '/etc/issue'
 }
 files.each do |key,value|
   cookbook_file value do
