@@ -67,8 +67,14 @@ end
     end
 end
 
-file '/etc/shadow' do
-  mode '0000'
-  owner 'root'
-  group 'root'
+files={
+  'shadow'=> '/etc/shadow',
+  'gshadow'=> '/etc/gshadow'
+}
+files.each do |key,value|
+  file value do
+    mode '0000'
+    owner 'root'
+    group 'root'
+  end
 end
