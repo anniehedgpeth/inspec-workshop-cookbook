@@ -49,7 +49,8 @@ end
 
 files={
   'hosts.allow'=> '/etc/hosts.allow',
-  'hosts.deny'=> '/etc/hosts.deny'
+  'hosts.deny'=> '/etc/hosts.deny',
+  'passwd'=> '/etc/passwd'
 }
 files.each do |key,value|
   cookbook_file value do
@@ -64,4 +65,10 @@ end
     execute 'kernel_parameters' do 
       command name 
     end
+end
+
+file '/etc/shadow' do
+  mode '0000'
+  owner 'root'
+  group 'root'
 end
