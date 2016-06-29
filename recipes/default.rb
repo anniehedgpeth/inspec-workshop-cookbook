@@ -50,7 +50,8 @@ end
 files={
   'hosts.allow'=> '/etc/hosts.allow',
   'hosts.deny'=> '/etc/hosts.deny',
-  'passwd'=> '/etc/passwd'
+  'passwd'=> '/etc/passwd',
+  'group'=> '/etc/group'
 }
 files.each do |key,value|
   cookbook_file value do
