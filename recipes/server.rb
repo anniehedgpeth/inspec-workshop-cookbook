@@ -1,0 +1,2 @@
+user 'server' do
+end
